@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:shopnthrive/create/create_cubit.dart';
+import 'package:shopnthrive/create/create_screen.dart';
+import 'package:shopnthrive/create/categories_cubit.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? k}) : super(key: k);
@@ -7,14 +11,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Shop & Thrive',
-          style: Theme.of(context).textTheme.headline5,
-        ),
-      ),
-      body: Container(
-        color: ShopNThriveColors.primary,
+      body: MultiProvider(
+        providers: [
+          BlocProvider(create: (_) => CreateCubit()),
+          BlocProvider(create: (_) => CategoriesCubit())
+        ],
+        child: const CreateScreen(),
       ),
     );
   }
