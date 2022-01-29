@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopnthrive/create/create_state.dart';
+import 'create_state.dart';
 
 class CreateCubit extends Cubit<CreateState> {
   CreateCubit() : super(const CreateProduct());
