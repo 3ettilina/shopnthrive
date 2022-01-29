@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:shopnthrive/create/create_cubit.dart';
 import 'package:shopnthrive/create/create_screen.dart';
-import 'package:shopnthrive/create/categories_cubit.dart';
+import 'package:shopnthrive/create/state/state.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? k}) : super(key: k);
@@ -14,7 +13,8 @@ class Home extends StatelessWidget {
       body: MultiProvider(
         providers: [
           BlocProvider(create: (_) => CreateCubit()),
-          BlocProvider(create: (_) => CategoriesCubit())
+          BlocProvider(create: (_) => CategoriesCubit()),
+          BlocProvider(create: (_) => ProductsCubit())
         ],
         child: const CreateScreen(),
       ),

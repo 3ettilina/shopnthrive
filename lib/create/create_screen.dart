@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopnthrive/create/create_category_view.dart';
-import 'package:shopnthrive/create/create_cubit.dart';
-import 'package:shopnthrive/create/create_state.dart';
+import 'package:shopnthrive/create/state/state.dart';
+import 'package:shopnthrive/create/views/create_category_view.dart';
+import 'package:shopnthrive/create/views/create_product_view.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({Key? k}) : super(key: k);
@@ -19,26 +19,25 @@ class _CreateScreenState extends State<CreateScreen> {
           state is CreateProduct ? 'Create Product' : 'Create Category';
 
       return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Switch(
-                value: state is CreateProduct,
-                onChanged: (value) => cubit.changeCreateType(value)),
-            Container(
-                child: state is CreateProduct
-                    ? Container(
-                        color: Colors.amber,
-                        child:
-                            const Center(child: Text('Create product section')),
-                      )
-                    : const CreateCategoryView()),
-          ],
-        ),
-      );
+          appBar: AppBar(
+            title: Text(
+              title,
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Switch(
+                    value: state is CreateProduct,
+                    onChanged: (value) => cubit.changeCreateType(value)),
+                Container(
+                    child: state is CreateProduct
+                        ? const CreateProductView()
+                        : const CreateCategoryView()),
+              ],
+            ),
+          ));
     });
   }
 }

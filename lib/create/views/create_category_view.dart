@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:shopnthrive/create/categories_cubit.dart';
-import 'package:shopnthrive/data/models/category.dart';
+import 'package:shopnthrive/create/components/components.dart';
+import 'package:shopnthrive/create/state/state.dart';
+import 'package:shopnthrive/data/models/models.dart';
 import 'package:shopnthrive/theme.dart';
 
 class CreateCategoryView extends StatefulWidget {
@@ -15,7 +16,7 @@ class CreateCategoryView extends StatefulWidget {
 class _CreateCategoryViewState extends State<CreateCategoryView> {
   final _nameIptController = TextEditingController();
   String categoryName = '';
-  Color categoryColor = ShopNThriveColors.primaryAccent;
+  Color categoryColor = ShopNThriveColors.lightOceanBlue;
 
   @override
   void initState() {
@@ -39,8 +40,21 @@ class _CreateCategoryViewState extends State<CreateCategoryView> {
     });
   }
 
-  void saveCategory() {
-    // TODO: implement save
+  void saveCategory(CategoriesCubit cubit) {
+    String message = '';
+
+    if (categoryName.isNotEmpty) {
+      Category cat = Category(name: categoryName, color: categoryColor);
+      cubit.addCategory(cat);
+
+      message = 'New category added: ${cubit.categories.last.name}';
+    } else {
+      message = 'The category must have a name, please add one.';
+    }
+
+    // Notify the user
+    SnackBar snackbar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
   @override
@@ -54,14 +68,12 @@ class _CreateCategoryViewState extends State<CreateCategoryView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Add input field
-            Text(
-              'Name',
-              style: Theme.of(context).textTheme.headline6,
-            ),
+            const FieldTitle(text: 'Name'),
             TextField(
               controller: _nameIptController,
               cursorColor: categoryColor,
               decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 hintText: 'i.e. Shoes, Electronics, Food',
                 hintStyle: Theme.of(context).textTheme.bodyText2,
               ),
@@ -69,10 +81,7 @@ class _CreateCategoryViewState extends State<CreateCategoryView> {
             const SizedBox(
               height: 30,
             ),
-            Text(
-              'Color',
-              style: Theme.of(context).textTheme.headline6,
-            ),
+            const FieldTitle(text: 'Color'),
             Row(
               children: [
                 OutlinedButton(
@@ -119,28 +128,8 @@ class _CreateCategoryViewState extends State<CreateCategoryView> {
               ],
             ),
             const SizedBox(height: 60),
-            Row(children: [
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () {
-                      Category cat =
-                          Category(name: categoryName, color: categoryColor);
-                      cubit.addCategory(cat);
-                      SnackBar snackbar = SnackBar(
-                          content: Text(
-                              'New category added: ${cubit.categories.last.name}'));
-                      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith(
-                          (states) => ShopNThriveColors.secondary),
-                    ),
-                    child: Text(
-                      'Save',
-                      style: Theme.of(context).textTheme.button,
-                    )),
-              ),
-            ]),
+            ButtonMainFullWidth(
+                onPressed: () => saveCategory(cubit), text: 'Save')
           ],
         ),
       );
