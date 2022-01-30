@@ -29,6 +29,8 @@ class ShopNThriveTheme {
           color: ShopNThriveColors.darkBlueDust,
           fontSize: 17,
           fontWeight: FontWeight.w400),
+      caption: GoogleFonts.secularOne(
+          color: Colors.black87, fontSize: 10, fontWeight: FontWeight.w700),
       button: GoogleFonts.staatliches(
         color: Colors.black87,
         fontSize: 18,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:shopnthrive/common/router_cubit.dart';
 import 'package:shopnthrive/home.dart';
+import 'package:shopnthrive/router/router.dart';
 import 'package:shopnthrive/theme.dart';
 
 void main() {

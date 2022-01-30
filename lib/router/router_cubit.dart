@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopnthrive/common/router_state.dart';
+import 'package:shopnthrive/router/router.dart';
 import 'package:shopnthrive/strings.dart';
 
 class RouterCubit extends Cubit<RouterState> {

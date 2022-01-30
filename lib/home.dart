@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:shopnthrive/common/router_cubit.dart';
-import 'package:shopnthrive/common/router_manager.dart';
-import 'package:shopnthrive/common/router_state.dart';
 import 'package:shopnthrive/create/components/components.dart';
 import 'package:shopnthrive/create/state/state.dart';
+import 'package:shopnthrive/router/router.dart';
 import 'package:shopnthrive/theme.dart';
 
 class Home extends StatelessWidget {
@@ -66,12 +64,13 @@ class Home extends StatelessWidget {
           ),
         ),
         body: MultiProvider(
-          providers: [
-            BlocProvider(create: (_) => CategoriesCubit()),
-            BlocProvider(create: (_) => ProductsCubit())
-          ],
-          child: RouterManager(currentScreen: router.state),
-        ),
+            providers: [
+              BlocProvider(create: (_) => CategoriesCubit()),
+              BlocProvider(create: (_) => ProductsCubit())
+            ],
+            child: SingleChildScrollView(
+              child: RouterManager(currentScreen: router.state),
+            )),
       );
     });
   }

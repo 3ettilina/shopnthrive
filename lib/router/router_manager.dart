@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/common/router_state.dart';
 import 'package:shopnthrive/create/components/components.dart';
 import 'package:shopnthrive/create/create_screen.dart';
+import 'package:shopnthrive/products/products_screen.dart';
+import 'package:shopnthrive/router/router.dart';
 
 class RouterManager extends StatelessWidget {
   final RouterState currentScreen;
@@ -23,11 +24,7 @@ class RouterManager extends StatelessWidget {
         ),
       ]);
     }
-    return Container(
-      color: Colors.pink[400],
-      child: const FieldTitle(
-        text: 'List of products',
-      ),
-    );
+    // List of Products screen
+    return const ProductsScreen();
   }
 }
