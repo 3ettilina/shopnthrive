@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopnthrive/common/router_cubit.dart';
+import 'package:shopnthrive/common/router_state.dart';
 import 'package:shopnthrive/create/state/state.dart';
 import 'package:shopnthrive/create/views/create_category_view.dart';
 import 'package:shopnthrive/create/views/create_product_view.dart';
@@ -13,31 +15,24 @@ class CreateScreen extends StatefulWidget {
 class _CreateScreenState extends State<CreateScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateCubit, CreateState>(builder: (context, state) {
-      CreateCubit cubit = BlocProvider.of<CreateCubit>(context);
-      String title =
-          state is CreateProduct ? 'Create Product' : 'Create Category';
+    return BlocBuilder<RouterCubit, RouterState>(builder: (context, state) {
+      RouterCubit router = BlocProvider.of<RouterCubit>(context);
 
-      return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              title,
-            ),
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Switch(
-                    value: state is CreateProduct,
-                    onChanged: (value) => cubit.changeCreateType(value)),
-                Container(
-                    child: state is CreateProduct
-                        ? const CreateProductView()
-                        : const CreateCategoryView()),
-              ],
-            ),
-          ));
+      return SingleChildScrollView(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Switch(
+              value: state is CreateProductScreen,
+              onChanged: (value) => value
+                  ? router.goToCreateProductScreen()
+                  : router.goToCreateCategoryScreen()),
+          Container(
+              child: state is CreateProductScreen
+                  ? const CreateProductView()
+                  : const CreateCategoryView()),
+        ],
+      ));
     });
   }
 }
