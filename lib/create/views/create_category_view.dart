@@ -41,19 +41,10 @@ class _CreateCategoryViewState extends State<CreateCategoryView> {
   }
 
   void saveCategory(CategoriesCubit cubit) {
-    String message = '';
-
-    if (categoryName.isNotEmpty) {
-      Category cat = Category(name: categoryName, color: categoryColor);
-      cubit.addCategory(cat);
-
-      message = 'New category added: ${cubit.categories.last.name}';
-    } else {
-      message = 'The category must have a name, please add one.';
-    }
+    String response = cubit.addCategory(categoryName, categoryColor);
 
     // Notify the user
-    SnackBar snackbar = SnackBar(content: Text(message));
+    SnackBar snackbar = SnackBar(content: Text(response));
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 

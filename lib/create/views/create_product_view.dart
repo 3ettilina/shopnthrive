@@ -91,7 +91,7 @@ class CreateProductViewState extends State<CreateProductView> {
               const FieldTitle(text: 'Category'),
               DropdownCategories(
                   context: context,
-                  categories: categoriesCubit.categories,
+                  categories: categoriesCubit.state,
                   onCategorySelected: _selectCategory),
               const SizedBox(
                 height: 30,
