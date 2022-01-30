@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:shopnthrive/common/router_cubit.dart';
 import 'package:shopnthrive/home.dart';
 import 'package:shopnthrive/theme.dart';
 
@@ -13,7 +16,10 @@ class ShopNThriveApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shop & Thrive',
-      home: const Home(),
+      home: MultiProvider(
+        providers: [BlocProvider(create: (_) => RouterCubit())],
+        child: const Home(),
+      ),
       theme: ShopNThriveTheme.themeData(),
       debugShowCheckedModeBanner: false,
     );
