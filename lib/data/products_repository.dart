@@ -24,9 +24,22 @@ class ProductsRepository {
       return null;
     }
   }
+
+  Future deleteProduct(Product product) async {
+    await store.doc(product.name.toLowerCase()).delete();
+  }
+
+  Future addFavoriteProduct(Product product) async {
+    await store.doc(product.name.toLowerCase()).update({'isFavorite': true});
+  }
+
+  Future removeFavoriteProduct(Product product) async {
+    await store.doc(product.name.toLowerCase()).update({'isFavorite': false});
+  }
+
+  Stream<List<Product>> getFavoriteProducts() {
+    return store.where('isFavorite', isEqualTo: true).snapshots().map(
+        (snapshot) =>
+            snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList());
+  }
 }
-
-
-
-    // return store.snapshots().map((snapshot) =>
-    //     snapshot.docs.map((doc) => Product.fromJson(doc.data())).toList());
