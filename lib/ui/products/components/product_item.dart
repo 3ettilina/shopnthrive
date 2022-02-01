@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/data/models/models.dart';
+import 'package:shopnthrive/domain/models/models.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
 
-  const ProductItem({required this.product, Key? k}) : super(key: k);
+  const ProductItem({required this.product, required Key? k}) : super(key: k);
 
   @override
   Widget build(BuildContext context) {

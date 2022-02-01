@@ -1,2 +1,2 @@
-export 'category_expansion_panel.dart';
+export 'expansion_panel_category.dart';
 export 'product_item.dart';

@@ -33,7 +33,6 @@ class BottomSheetImageSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Container(
       child: Wrap(
         children: [
           ListTile(
@@ -56,6 +55,6 @@ class BottomSheetImageSelector extends StatelessWidget {
           )
         ],
       ),
-    ));
+    );
   }
 }

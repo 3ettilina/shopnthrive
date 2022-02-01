@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:shopnthrive/router/router.dart';
+import 'package:shopnthrive/strings.dart';
 import 'package:shopnthrive/theme.dart';
 import 'ui/ui.dart';
 
@@ -28,8 +29,8 @@ class Home extends StatelessWidget {
                 child: FieldTitle(text: 'Menu'),
               ),
               ListTile(
-                title: const FieldTitle(
-                  text: 'All products',
+                title: FieldTitle(
+                  text: ShopNThriveStrings.productsListScreenTitle(),
                 ),
                 onTap: () {
                   router.goToListOfProductsScreen();
@@ -37,22 +38,24 @@ class Home extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: const FieldTitle(text: 'Create Product'),
+                title: FieldTitle(
+                    text: ShopNThriveStrings.createProductScreenTitle()),
                 onTap: () {
                   router.goToCreateProductScreen();
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: const FieldTitle(text: 'Create Category'),
+                title: FieldTitle(
+                    text: ShopNThriveStrings.createCategoryScreenTitle()),
                 onTap: () {
                   router.goToCreateCategoryScreen();
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: const FieldTitle(
-                  text: 'Favorites',
+                title: FieldTitle(
+                  text: ShopNThriveStrings.favoritesListScreenTitle(),
                 ),
                 onTap: () {
                   router.goToListOfFavoritesScreen();

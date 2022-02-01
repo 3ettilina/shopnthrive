@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/data/models/models.dart';
+import 'package:shopnthrive/domain/models/models.dart';
 
 class DropdownCategories extends StatefulWidget {
   final BuildContext context;

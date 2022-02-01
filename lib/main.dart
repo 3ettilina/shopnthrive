@@ -26,7 +26,7 @@ class ShopNThriveApp extends StatelessWidget {
       home: MultiProvider(
         providers: [
           BlocProvider(create: (_) => RouterCubit()),
-          BlocProvider(create: (_) => ProductImageCubit())
+          BlocProvider(create: (_) => ProductImageCubit()),
         ],
         child: const Home(),
       ),

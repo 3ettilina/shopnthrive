@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopnthrive/data/models/models.dart';
-import 'package:shopnthrive/domain/create_product.dart';
-import 'package:shopnthrive/domain/get_categories.dart';
+import 'package:shopnthrive/domain/features/features.dart';
+import 'package:shopnthrive/domain/models/models.dart';
 import 'package:shopnthrive/theme.dart';
 import 'package:shopnthrive/ui/ui.dart';
 
@@ -74,7 +73,7 @@ class CreateProductViewState extends State<CreateProductView> {
             cursorColor: categoryColor,
             decoration: InputDecoration(
               border: const OutlineInputBorder(),
-              hintText: 'i.e. Marcel Calzados\' Sandals',
+              hintText: 'i.e. Watermelon',
               hintStyle: Theme.of(context).textTheme.bodyText2,
             ),
           ),
