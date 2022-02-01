@@ -30,5 +30,6 @@ class Category {
   int get hashCode => hashValues(name, color);
 
   @override
-  operator ==(o) => o is Category && o.name == name && o.color == color;
+  operator ==(other) =>
+      other is Category && other.name == name && other.color == color;
 }

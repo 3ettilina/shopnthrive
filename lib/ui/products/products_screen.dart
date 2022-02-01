@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/data/models/models.dart';
-import 'package:shopnthrive/domain/get_products.dart';
-
-import 'components/components.dart';
+import 'package:shopnthrive/domain/features/features.dart';
+import 'package:shopnthrive/domain/models/models.dart';
+import 'package:shopnthrive/ui/products/components/components.dart';
 
 class ProductsScreen extends StatelessWidget {
   final getProducts = GetProducts();
@@ -19,15 +18,12 @@ class ProductsScreen extends StatelessWidget {
           return Container(
               padding: const EdgeInsets.all(16),
               child: productsByCategory.isNotEmpty
-                  ? CategoryExpansionPanel(categoryProducts: productsByCategory)
-                  : Container(
-                      height: 200,
-                      color: Colors.amber[400],
-                    ));
+                  ? ExpansionPanelCategory(categoryProducts: productsByCategory)
+                  : Center(child: Image.asset('assets/empty-box.gif')));
         }
         if (snapshot.hasError) {
-          return const Center(
-            child: Text('Something went wrong'),
+          return Center(
+            child: Image.asset('assets/error.gif'),
           );
         }
         return const Center(

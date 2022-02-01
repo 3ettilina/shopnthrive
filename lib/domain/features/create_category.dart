@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/data/api/api.dart';
-import 'package:shopnthrive/data/models/models.dart';
-import '../strings.dart';
+import 'package:shopnthrive/data/data.dart';
+import 'package:shopnthrive/domain/models/models.dart';
+import 'package:shopnthrive/strings.dart';
 
 class CreateCategory {
   final repo = CategoriesRepository();

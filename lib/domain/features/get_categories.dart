@@ -1,5 +1,5 @@
-import 'package:shopnthrive/data/api/api.dart';
-import 'package:shopnthrive/data/models/category.dart';
+import 'package:shopnthrive/data/data.dart';
+import 'package:shopnthrive/domain/models/models.dart';
 
 class GetCategories {
   final repo = CategoriesRepository();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopnthrive/router/router.dart';
+import 'package:shopnthrive/ui/favorites/favorites_screen.dart';
 import 'package:shopnthrive/ui/ui.dart';
 
 class RouterManager extends StatelessWidget {
@@ -13,14 +14,7 @@ class RouterManager extends StatelessWidget {
       return const CreateScreen();
     }
     if (currentScreen is ListOfFavoritesScreen) {
-      return Column(children: [
-        Container(
-          child: const FieldTitle(
-            text: 'Favorites',
-          ),
-          color: Colors.amber[400],
-        ),
-      ]);
+      return const FavoritesScreen();
     }
     // List of Products screen
     return ProductsScreen();

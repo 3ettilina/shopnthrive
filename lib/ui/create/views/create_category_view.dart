@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:shopnthrive/domain/create_category.dart';
+import 'package:shopnthrive/domain/features/features.dart';
 import 'package:shopnthrive/theme.dart';
 import 'package:shopnthrive/ui/create/components/components.dart';
 

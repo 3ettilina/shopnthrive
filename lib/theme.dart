@@ -38,14 +38,17 @@ class ShopNThriveTheme {
       ));
 
   static ThemeData themeData() => ThemeData(
-      brightness: Brightness.light,
-      primaryColor: ShopNThriveColors.darkOceanBlue,
-      textTheme: textTheme,
-      appBarTheme: AppBarTheme(
-          backgroundColor: ShopNThriveColors.lightOceanBlue,
-          centerTitle: true,
-          titleTextStyle: GoogleFonts.secularOne(
-              color: Colors.white, fontSize: 24, fontWeight: FontWeight.w600)),
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-          color: ShopNThriveColors.lightOceanBlue));
+        brightness: Brightness.light,
+        primaryColor: ShopNThriveColors.darkOceanBlue,
+        textTheme: textTheme,
+        appBarTheme: AppBarTheme(
+            backgroundColor: ShopNThriveColors.lightOceanBlue,
+            centerTitle: true,
+            titleTextStyle: GoogleFonts.secularOne(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.w600)),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+            color: ShopNThriveColors.lightOceanBlue),
+      );
 }

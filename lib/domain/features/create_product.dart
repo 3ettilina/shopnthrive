@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:shopnthrive/data/api/api.dart';
-import 'package:shopnthrive/data/models/models.dart';
+import 'package:shopnthrive/data/data.dart';
+import 'package:shopnthrive/domain/models/models.dart';
 import 'package:shopnthrive/strings.dart';
 
 class CreateProduct {
