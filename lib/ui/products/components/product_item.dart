@@ -12,24 +12,26 @@ class ProductItem extends StatelessWidget {
   final removeFromFav = RemoveFavorite();
   final deleteProduct = DeleteProduct();
 
-  ProductItem({required this.product, required Key? k}) : super(key: k);
+  ProductItem({required this.product, Key? k}) : super(key: k);
 
   void onSwipeRight(BuildContext context) async {
     String message = '';
     if (product.isFavorite) {
-      message = await removeFromFav.execute(product);
+      Future<String> response = removeFromFav.execute(product);
+      await response.then((msg) => message = msg);
+      _showMessage(context, message);
     } else {
-      message = await addToFav.execute(product);
+      Future<String> response = addToFav.execute(product);
+      await response.then((msg) => message = msg);
+      _showMessage(context, message);
     }
-    showMessage(context, message);
   }
 
   void onSwipeLeft(BuildContext context) async {
-    String message = await deleteProduct.execute(product);
-    showMessage(context, message);
+    await deleteProduct.execute(product);
   }
 
-  void showMessage(BuildContext context, String message) {
+  void _showMessage(BuildContext context, String message) {
     SnackBar snackbar = SnackBar(content: Text(message));
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
