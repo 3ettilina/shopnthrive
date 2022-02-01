@@ -24,30 +24,35 @@ class SlidableWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Slidable(
       key: ValueKey(child.key),
-      startActionPane: ActionPane(motion: const DrawerMotion(), children: [
-        SlidableAction(
-          onPressed: (_) => (onSwipeRight != null) ? onSwipeRight!() : {},
-          backgroundColor: Colors.pink.shade500,
-          foregroundColor: Colors.white,
-          icon: onSwipeRightIcon,
-          label: onSwipeRightText,
-        )
-      ]),
-      endActionPane: ActionPane(
-          key: child.key,
-          motion: const DrawerMotion(),
-          dismissible: DismissiblePane(
-            key: child.key,
-            onDismissed: () => {(onSwipeLeft != null) ? onSwipeLeft!() : {}},
-          ),
-          children: [
-            SlidableAction(
-              onPressed: (_) => {},
-              backgroundColor: Colors.red.shade500,
-              foregroundColor: Colors.white,
-              icon: onSwipeLeftIcon,
-              label: onSwipeLeftText,
-            )
-          ]),
+      startActionPane: onSwipeRight != null
+          ? ActionPane(motion: const DrawerMotion(), children: [
+              SlidableAction(
+                onPressed: (_) => (onSwipeRight != null) ? onSwipeRight!() : {},
+                backgroundColor: Colors.pink.shade500,
+                foregroundColor: Colors.white,
+                icon: onSwipeRightIcon,
+                label: onSwipeRightText,
+              )
+            ])
+          : null,
+      endActionPane: onSwipeLeft != null
+          ? ActionPane(
+              key: child.key,
+              motion: const DrawerMotion(),
+              dismissible: DismissiblePane(
+                key: child.key,
+                onDismissed: () =>
+                    {(onSwipeLeft != null) ? onSwipeLeft!() : {}},
+              ),
+              children: [
+                  SlidableAction(
+                    onPressed: (_) => {},
+                    backgroundColor: Colors.red.shade500,
+                    foregroundColor: Colors.white,
+                    icon: onSwipeLeftIcon,
+                    label: onSwipeLeftText,
+                  )
+                ])
+          : null,
       child: child);
 }

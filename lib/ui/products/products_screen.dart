@@ -9,6 +9,11 @@ class ProductsScreen extends StatelessWidget {
   ProductsScreen({Key? k}) : super(key: k);
   @override
   Widget build(BuildContext context) {
+    void _showMessage(String message) {
+      SnackBar snackbar = SnackBar(content: Text(message));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+
     return StreamBuilder<List<Product>>(
       stream: getProducts.execute(),
       builder: (context, snapshot) {
@@ -18,7 +23,10 @@ class ProductsScreen extends StatelessWidget {
           return Container(
               padding: const EdgeInsets.all(16),
               child: productsByCategory.isNotEmpty
-                  ? ExpansionPanelCategory(categoryProducts: productsByCategory)
+                  ? ExpansionPanelCategory(
+                      categoryProducts: productsByCategory,
+                      showMessage: _showMessage,
+                    )
                   : Center(child: Image.asset('assets/empty-box.gif')));
         }
         if (snapshot.hasError) {

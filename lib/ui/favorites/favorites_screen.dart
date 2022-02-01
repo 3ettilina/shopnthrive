@@ -10,6 +10,11 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _showMessage(String message) {
+      SnackBar snackbar = SnackBar(content: Text(message));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+
     return StreamBuilder<List<Product>>(
       stream: getFavorites.execute(),
       builder: (context, snapshot) {
@@ -20,7 +25,10 @@ class FavoritesScreen extends StatelessWidget {
           return Container(
               padding: const EdgeInsets.all(16),
               child: productsByCategory.isNotEmpty
-                  ? ExpansionPanelCategory(categoryProducts: productsByCategory)
+                  ? ExpansionPanelCategory(
+                      categoryProducts: productsByCategory,
+                      showMessage: _showMessage,
+                    )
                   : Center(child: Image.asset('assets/empty-box.gif')));
         }
         if (snapshot.hasError) {

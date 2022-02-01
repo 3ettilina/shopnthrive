@@ -9,6 +9,8 @@ class ShopNThriveStrings {
 
   // CATEGORY
   static categoryAdded(String name) => 'New category added: $name';
+  static categoryRemoved(String name) =>
+      '$name was removed with all its products.';
   static categoryNameMissing() =>
       'The category must have a name, please add one :)';
   static categoryNameDuplicated() =>
