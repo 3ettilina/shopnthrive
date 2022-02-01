@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopnthrive/data/models/models.dart';
-import 'package:shopnthrive/products/components/product_item.dart';
+
+import 'components.dart';
 
 class CategoryExpansionPanel extends StatelessWidget {
   final Map<Category, List<Product>> categoryProducts;
