@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shopnthrive/router/router.dart';
 import 'package:shopnthrive/strings.dart';
 import 'package:shopnthrive/theme.dart';
+import 'package:shopnthrive/ui/menu/menu_item.dart';
 import 'ui/ui.dart';
 
 class Home extends StatelessWidget {
@@ -23,45 +24,54 @@ class Home extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              const DrawerHeader(
-                decoration:
-                    BoxDecoration(color: ShopNThriveColors.lightOceanBlue),
-                child: FieldTitle(text: 'Menu'),
-              ),
-              ListTile(
-                title: FieldTitle(
-                  text: ShopNThriveStrings.productsListScreenTitle(),
-                ),
-                onTap: () {
-                  router.goToListOfProductsScreen();
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: FieldTitle(
-                    text: ShopNThriveStrings.createProductScreenTitle()),
-                onTap: () {
-                  router.goToCreateProductScreen();
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: FieldTitle(
-                    text: ShopNThriveStrings.createCategoryScreenTitle()),
-                onTap: () {
-                  router.goToCreateCategoryScreen();
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: FieldTitle(
-                  text: ShopNThriveStrings.favoritesListScreenTitle(),
-                ),
-                onTap: () {
-                  router.goToListOfFavoritesScreen();
-                  Navigator.pop(context);
-                },
-              )
+              DrawerHeader(
+                  decoration: const BoxDecoration(
+                      color: ShopNThriveColors.lightOceanBlue),
+                  child: Center(
+                      child: ListTile(
+                    title: Text(
+                      ShopNThriveStrings.menuHeaderTitle(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          ?.copyWith(color: Colors.white),
+                    ),
+                    subtitle: Text(
+                      ShopNThriveStrings.menuHeaderSubTitle(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline3
+                          ?.copyWith(color: Colors.white),
+                    ),
+                  ))),
+              MenuItem(
+                  title: ShopNThriveStrings.productsListScreenTitle(),
+                  icon: Icons.list,
+                  onTap: () {
+                    router.goToListOfProductsScreen();
+                    Navigator.pop(context);
+                  }),
+              MenuItem(
+                  title: ShopNThriveStrings.favoritesListScreenTitle(),
+                  icon: Icons.favorite_border_rounded,
+                  onTap: () {
+                    router.goToListOfFavoritesScreen();
+                    Navigator.pop(context);
+                  }),
+              MenuItem(
+                  title: ShopNThriveStrings.createProductScreenTitle(),
+                  icon: Icons.add_shopping_cart_outlined,
+                  onTap: () {
+                    router.goToCreateProductScreen();
+                    Navigator.pop(context);
+                  }),
+              MenuItem(
+                  title: ShopNThriveStrings.createCategoryScreenTitle(),
+                  icon: Icons.add_box_outlined,
+                  onTap: () {
+                    router.goToCreateCategoryScreen();
+                    Navigator.pop(context);
+                  }),
             ],
           ),
         ),

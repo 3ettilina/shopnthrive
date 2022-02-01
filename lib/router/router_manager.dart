@@ -14,7 +14,7 @@ class RouterManager extends StatelessWidget {
       return const CreateScreen();
     }
     if (currentScreen is ListOfFavoritesScreen) {
-      return const FavoritesScreen();
+      return FavoritesScreen();
     }
     // List of Products screen
     return ProductsScreen();
