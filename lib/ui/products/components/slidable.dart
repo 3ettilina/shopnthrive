@@ -23,21 +23,25 @@ class SlidableWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Slidable(
-      key: ValueKey(child.key),
+      key: UniqueKey(),
       startActionPane: onSwipeRight != null
-          ? ActionPane(motion: const DrawerMotion(), children: [
-              SlidableAction(
-                onPressed: (_) => (onSwipeRight != null) ? onSwipeRight!() : {},
-                backgroundColor: Colors.pink.shade500,
-                foregroundColor: Colors.white,
-                icon: onSwipeRightIcon,
-                label: onSwipeRightText,
-              )
-            ])
+          ? ActionPane(
+              key: UniqueKey(),
+              motion: const DrawerMotion(),
+              children: [
+                  SlidableAction(
+                    onPressed: (_) =>
+                        (onSwipeRight != null) ? onSwipeRight!() : {},
+                    backgroundColor: Colors.pink.shade500,
+                    foregroundColor: Colors.white,
+                    icon: onSwipeRightIcon,
+                    label: onSwipeRightText,
+                  )
+                ])
           : null,
       endActionPane: onSwipeLeft != null
           ? ActionPane(
-              key: child.key,
+              key: UniqueKey(),
               motion: const DrawerMotion(),
               dismissible: DismissiblePane(
                 key: child.key,
