@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shopnthrive/create/views/create_category_view.dart';
-import 'package:shopnthrive/create/views/create_product_view.dart';
 import 'package:shopnthrive/router/router.dart';
+import 'package:shopnthrive/ui/ui.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({Key? k}) : super(key: k);

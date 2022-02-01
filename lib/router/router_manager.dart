@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopnthrive/create/components/components.dart';
-import 'package:shopnthrive/create/create_screen.dart';
-import 'package:shopnthrive/products/products_screen.dart';
 import 'package:shopnthrive/router/router.dart';
+import 'package:shopnthrive/ui/ui.dart';
 
 class RouterManager extends StatelessWidget {
   final RouterState currentScreen;
@@ -25,6 +23,6 @@ class RouterManager extends StatelessWidget {
       ]);
     }
     // List of Products screen
-    return const ProductsScreen();
+    return ProductsScreen();
   }
 }

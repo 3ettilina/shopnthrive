@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:shopnthrive/create/components/components.dart';
-import 'package:shopnthrive/create/state/state.dart';
 import 'package:shopnthrive/router/router.dart';
 import 'package:shopnthrive/theme.dart';
+import 'ui/ui.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? k}) : super(key: k);
@@ -64,10 +63,7 @@ class Home extends StatelessWidget {
           ),
         ),
         body: MultiProvider(
-            providers: [
-              BlocProvider(create: (_) => CategoriesCubit()),
-              BlocProvider(create: (_) => ProductsCubit())
-            ],
+            providers: [BlocProvider(create: (_) => ProductImageCubit())],
             child: SingleChildScrollView(
               child: RouterManager(currentScreen: router.state),
             )),

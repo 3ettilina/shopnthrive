@@ -14,6 +14,9 @@ class ShopNThriveStrings {
   static categoryNameDuplicated() =>
       'There\'s another category with the same name, please choose another :)';
 
+  static somethingWentWrong() =>
+      'Ups, something went wrong, please try again :)';
+
   // SCREEN TITLE
   static createProductScreenTitle() => 'Create product';
   static createCategoryScreenTitle() => 'Create category';
