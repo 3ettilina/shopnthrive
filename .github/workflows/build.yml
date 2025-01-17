@@ -18,6 +18,7 @@ jobs:
         with:
           channel: stable
           flutter-version: 3.7.12
+      - run: flutter doctor --verbose
       - run: flutter pub get
       - run: flutter build apk
       - name: SonarQube Scan
